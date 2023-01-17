@@ -1,0 +1,25 @@
+{
+  "name": "labecommerce-backend",
+  "version": "1.0.0",
+  "description": "Esse é um projeto de introdução ao backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "clear && node ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielsan179/labecommerce-backend.git"
+  },
+  "keywords": ["projeto backend", "node", "package.json", "labenu"],
+  "author": "Gabriel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabrielsan179/labecommerce-backend/issues"
+  },
+  "homepage": "https://github.com/gabrielsan179/labecommerce-backend#readme",
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  }
+}
