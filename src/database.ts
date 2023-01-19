@@ -91,3 +91,34 @@ export const createPurchase = (userId : string, productId : string, quantity : n
 export const getAllPurchasesFromUserId = (userIdToSearch : string) : TPurchase[] => {
     return purchases.filter(purchase => purchase.userId === userIdToSearch);
 }
+
+export const deleteUserById = (id : string) => {
+    const indexUser = users.findIndex((user) => user.id === id)
+    if(indexUser >= 0){
+        users.splice(indexUser, 1)     
+    }
+}
+
+export const deleteProductById = (id : string) => {
+    const indexProduct = products.findIndex((product) => product.id === id)
+    if(indexProduct >= 0){
+        users.splice(indexProduct, 1)     
+    }
+}
+
+export const editUserById = (id : string, email : string | undefined, password : string | undefined) => {
+    const filterUser = users.find((user) => user.id === id)
+    if(filterUser){
+        filterUser.email = email || filterUser.email
+        filterUser.password = password || filterUser.password
+    }
+}
+
+export const editProductById = (id : string, name : string | undefined, price : number | undefined, category : CATEGORY | undefined) => {
+    const filterProd = products.find((product) => product.id === id)
+    if(filterProd){
+        filterProd.name = name || filterProd.name
+        filterProd.price = price || filterProd.price 
+        filterProd.category = category || filterProd.category
+    }
+}

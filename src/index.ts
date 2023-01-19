@@ -1,15 +1,16 @@
-import { 
-    users, 
-    products, 
-    purchases, 
+import {
+    getAllUsers,
+    getAllProducts,
     createUser,
-    createProduct, 
-    createPurchase, 
+    createProduct,
+    createPurchase,
     queryProductsByName,
-    getAllUsers, 
-    getAllProducts, 
-    getProductById, 
-    getAllPurchasesFromUserId 
+    getProductById,
+    getAllPurchasesFromUserId,
+    deleteUserById,
+    deleteProductById,
+    editUserById,
+    editProductById
 } from './database';
 import { CATEGORY } from './types';
 import express, { Request, Response} from 'express';
@@ -31,15 +32,11 @@ app.get("/ping", (req: Request, res: Response) => {
 })
 
 app.get('/users', (req:Request, res:Response) => {
-    res.status(200).send(users)
+    res.status(200).send(getAllUsers())
 })
 
 app.get('/products', (req:Request, res:Response) => {
-    res.status(200).send(products)
-})
-
-app.get('/purchases', (req:Request, res:Response) => {
-    res.status(200).send(purchases)
+    res.status(200).send(getAllProducts())
 })
 
 app.get('/products/search', (req:Request, res:Response) => {
@@ -71,4 +68,44 @@ app.post('/purchases', (req:Request, res:Response) => {
     const totalPrice = req.body.totalPrice as number
     createPurchase(userId, productId, quantity, totalPrice)
     res.status(201).send('Compra realizada com sucesso!')
+})
+
+app.get('/products/:id', (req:Request, res:Response) => {
+    const id = req.params.id as string
+    res.status(200).send(getProductById(id))
+
+})
+
+app.get('/users/:id/purchases', (req:Request, res:Response) => {
+    const id = req.params.id as string
+    res.status(200).send(getAllPurchasesFromUserId(id))
+})
+
+app.delete('/users/:id', (req:Request, res:Response) => {
+    const id = req.params.id as string
+    deleteUserById(id)
+    res.status(200).send("Usuário desligado com sucesso")
+})
+
+app.delete('/products/:id', (req:Request, res:Response) => {
+    const id = req.params.id as string
+    deleteProductById(id)
+    res.status(200).send("Produto desligado com sucesso")
+})
+
+app.put('/users/:id', (req:Request, res:Response)=>{
+    const id = req.params.id as string
+    const newEmail = req.body.email as string | undefined
+    const newPassword = req.body.password as string | undefined
+    editUserById(id, newEmail, newPassword)
+    res.status(200).send("Cadastro atualizado com sucesso")
+})
+
+app.put('/products/:id', (req:Request, res:Response)=>{
+    const id = req.params.id as string
+    const newName = req.body.name as string | undefined
+    const newPrice = req.body.price as number | undefined
+    const newCategory = req.body.category as CATEGORY | undefined
+    editProductById(id, newName, newPrice, newCategory)
+    res.status(200).send("Produto atualizado com sucesso")
 })
