@@ -56,6 +56,10 @@ export const getAllUsers = (): TUser[] => {
     return users
 }
 
+export const getUsertById = (id : string) : (undefined | TUser) => {
+    return users.find((user) => user.id === id)
+}
+
 export const createProduct = (id : string, name : string, price : number, category : CATEGORY) : string => {
     products.push({
         id,
@@ -102,23 +106,23 @@ export const deleteUserById = (id : string) => {
 export const deleteProductById = (id : string) => {
     const indexProduct = products.findIndex((product) => product.id === id)
     if(indexProduct >= 0){
-        users.splice(indexProduct, 1)     
+        products.splice(indexProduct, 1)     
     }
 }
 
 export const editUserById = (id : string, email : string | undefined, password : string | undefined) => {
-    const filterUser = users.find((user) => user.id === id)
-    if(filterUser){
-        filterUser.email = email || filterUser.email
-        filterUser.password = password || filterUser.password
+    const user = users.find((user) => user.id === id)
+    if(user){
+        user.email = email || user.email
+        user.password = password || user.password
     }
 }
 
 export const editProductById = (id : string, name : string | undefined, price : number | undefined, category : CATEGORY | undefined) => {
-    const filterProd = products.find((product) => product.id === id)
-    if(filterProd){
-        filterProd.name = name || filterProd.name
-        filterProd.price = price || filterProd.price 
-        filterProd.category = category || filterProd.category
+    const product = products.find((product) => product.id === id)
+    if(product){
+        product.name = name || product.name
+        product.price = price || product.price 
+        product.category = category || product.category
     }
 }
