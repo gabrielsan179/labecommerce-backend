@@ -69,3 +69,32 @@ LIMIT 0, 20;
 SELECT * FROM products
 WHERE price >= 50 AND price <= 150
 ORDER BY price ASC;
+CREATE TABLE purchases (
+    id TEXT PRIMARY KEY UNIQUE NOT NULL,
+    total_price REAL NOT NULL,
+    paid INTEGER NOT NULL,
+    delivered_at TEXT,
+    buyer_id TEXT NOT NULL,
+    FOREIGN KEY (buyer_id) REFERENCES users (id)
+);
+DROP TABLE purchases;
+SELECT * FROM purchases;
+INSERT INTO
+    purchases (id, total_price, paid, buyer_id)
+VALUES 
+    ("P01", 250, 0, "u001"),
+    ("P02", 200, 0, "u001"),
+    ("P03", 150, 0, "u002"),
+    ("P04", 180, 0, "u002"),
+    ("P05", 400, 0, "u003"),
+    ("P06", 500, 0, "u003");
+UPDATE purchases
+SET paid = 1
+WHERE id = "P03";
+UPDATE purchases
+SET delivered_at = DATETIME('now', 'localtime')
+WHERE id = "P03";
+SELECT * FROM purchases
+INNER JOIN users
+ON users.id = buyer_id
+WHERE users.id="u002";
