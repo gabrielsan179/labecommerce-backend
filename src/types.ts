@@ -7,7 +7,10 @@ export type TUser = {
 export enum CATEGORY {
     FUTEBOL = "futebol",
     FUTVOLEI = "futvolei",
-    BASQUETE = "basquete"
+    BASQUETE = "basquete",
+    VOLEI = "volei",
+    HANDEBOL = "handebol",
+    TENIS = "tenis"
 }
 
 export type TProduct = {
