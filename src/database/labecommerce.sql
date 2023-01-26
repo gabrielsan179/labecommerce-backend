@@ -209,15 +209,25 @@ VALUES (
 
 INSERT INTO
     purchases (id, buyer, total_price)
-VALUES ("P01", "u001", 250), ("P02", "u001", 200), ("P03", "u002", 150), ("P04", "u002", 180), ("P05", "u003", 400), ("P06", "u003", 500);
+VALUES 
+    ("P01", "u001", 250), 
+    ("P02", "u001", 200), 
+    ("P03", "u002", 150), 
+    ("P04", "u002", 180), 
+    ("P05", "u003", 400), 
+    ("P06", "u003", 500);
 
 INSERT INTO
-    purchases_products (
-        purchase_id,
-        product_id,
-        quantity
-    )
-VALUES ("P01", "p013", 1), ("P02", "p017", 1), ("P02", "p007", 1), ("P03", "p008", 3), ("P04", "p011", 3), ("P04", "p012", 1), ("P05", "p020", 4), ("P06", "p005", 5);
+    purchases_products (purchase_id, product_id, quantity)
+VALUES 
+    ("P01", "p013", 1), 
+    ("P02", "p017", 1), 
+    ("P02", "p007", 1), 
+    ("P03", "p008", 3), 
+    ("P04", "p011", 3), 
+    ("P04", "p012", 1), 
+    ("P05", "p020", 4), 
+    ("P06", "p005", 5);
 
 UPDATE users SET email = "lala@labe.com" WHERE id = "u002";
 
@@ -226,8 +236,7 @@ UPDATE products SET name = "rede para gol" WHERE id="p020";
 UPDATE purchases SET paid = 1 WHERE id = "P03";
 
 UPDATE purchases
-SET
-    delivered_at = DATETIME('now', 'localtime')
+SET delivered_at = DATETIME('now', 'localtime')
 WHERE id = "P03";
 
 DELETE FROM users WHERE id = "u004";
@@ -261,7 +270,14 @@ INNER JOIN users
 ON users.id = buyer
 WHERE users.id = "u002";
 
-SELECT *
+SELECT 
+    products.id,
+    products.name,
+    products.price,
+    products.description,
+    products.imageUrl,
+    purchases_products.quantity
 FROM purchases
     INNER JOIN purchases_products ON purchases_products.purchase_id = purchases.id
-    INNER JOIN products ON purchases_products.product_id = products.id;
+    INNER JOIN products ON purchases_products.product_id = products.id
+    WHERE purchase_id = "P02";
