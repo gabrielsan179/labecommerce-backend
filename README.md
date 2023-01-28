@@ -5,6 +5,7 @@ Esse é um projeto de introdução ao backend
 
 ## Indice
 - <a href="#funcionalidades-do-projeto">Funcionalidades do projeto</a>
+- <a href="#estrutura-do-banco-de-dados">Estrutura do Banco de dados</a>
 - <a href="#demonstração">Demonstração</a>
 - <a href="#como-rodar-o-projeto?">Como rodar o projeto?
 - <a href="#tecnologias-utilizadas">Tecnologias utilizadas</a>
@@ -14,8 +15,10 @@ Esse é um projeto de introdução ao backend
 
 - [x]Buscar todos os usuários cadastrados
 - [x]Buscar todos os produtos cadastrados
-- [x]Buscar produtos pelo nome
-- [x]Buscar produtos pelo ID
+- [x]Buscar todas as compras cadastradas
+- [x]Buscar usuário pelo ID
+- [x]Buscar produto pelo ID
+- [x]Buscar compra pelo ID
 - [x]Buscar todas as compras de um único usuário
 - [x]Cadastrar um novo usuário
 - [x]Cadastrar um novo produto
@@ -24,6 +27,10 @@ Esse é um projeto de introdução ao backend
 - [x]Deletar produto pelo ID
 - [x]Editar usuário pelo ID
 - [x]Editar produto por ID
+
+## Estrutura do Banco de dados
+
+![labecommerce](./assets/labecommerce.png)
 
 ## Demonstração
 [Link da documentação API](https://documenter.getpostman.com/view/24460946/2s8ZDcyezk)
@@ -53,6 +60,7 @@ $ npm rum start
 3. [Express](https://expressjs.com/pt-br/)
 4. [SQLite](https://www.sqlite.org/index.html)
 5. [Knexjs](https://knexjs.org/)
+6. [Postman](https://www.postman.com/)
 
 ## Autor
 <img style="width: 150px" src="./assets/eu.jpg" alt="Gabriel">
