@@ -22,9 +22,10 @@ Esse é um projeto de introdução ao backend
 - [x]Buscar todas as compras de um único usuário
 - [x]Cadastrar um novo usuário
 - [x]Cadastrar um novo produto
-- [x]Realizar uma nova compra
+- [x]Cadastrar uma nova compra
 - [x]Excluir usuário pelo ID
 - [x]Deletar produto pelo ID
+- [x]Cancelar compra pelo ID
 - [x]Editar usuário pelo ID
 - [x]Editar produto por ID
 
